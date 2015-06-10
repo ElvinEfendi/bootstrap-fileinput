@@ -625,7 +625,8 @@
         listen: function () {
             var self = this, $el = self.$element, $cap = self.$captionContainer, $btnFile = self.$btnFile,
                 $form = $el.closest('form');
-            $form.on('change', $el.selector, $.proxy(self.change, self));
+            var selector = '#' + $el.prop('id') + '.' + $el.prop('class').repl(' ', '.');
+            $form.on('change', selector, $.proxy(self.change, self));
             $(window).on('resize', function () {
                 self.setEllipsis();
             });
