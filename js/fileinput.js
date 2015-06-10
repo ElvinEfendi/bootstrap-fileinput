@@ -2,14 +2,14 @@
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2015
  * @version 4.2.1
  *
- * File input styled for Bootstrap 3.0 that utilizes HTML5 File Input's advanced 
- * features including the FileReader API. 
- * 
+ * File input styled for Bootstrap 3.0 that utilizes HTML5 File Input's advanced
+ * features including the FileReader API.
+ *
  * The plugin drastically enhances the HTML file input to preview multiple files on the client before
- * upload. In addition it provides the ability to preview content of images, text, videos, audio, html, 
- * flash and other objects. It also offers the ability to upload and delete files using AJAX, and add 
+ * upload. In addition it provides the ability to preview content of images, text, videos, audio, html,
+ * flash and other objects. It also offers the ability to upload and delete files using AJAX, and add
  * files in batches (i.e. preview, append, or remove before upload).
- * 
+ *
  * Author: Kartik Visweswaran
  * Copyright: 2015, Kartik Visweswaran, Krajee.com
  * For more JQuery plugins visit http://plugins.krajee.com
@@ -66,7 +66,7 @@
                     (all ? previewCache.data[id].content.length : previewCache.fetch(id).length) : 0;
             },
             get: function (id, i, isDisabled) {
-                var ind = 'init_' + i, data = previewCache.data[id], config = data.config[i], 
+                var ind = 'init_' + i, data = previewCache.data[id], config = data.config[i],
                     previewId = data.initId + '-' + ind, out, $tmp, frameAttr = {},
                     frameClass = ' file-preview-initial';
                 isDisabled = isDisabled === undefined ? true : isDisabled;
@@ -625,7 +625,7 @@
         listen: function () {
             var self = this, $el = self.$element, $cap = self.$captionContainer, $btnFile = self.$btnFile,
                 $form = $el.closest('form');
-            $el.on('change', $.proxy(self.change, self));
+            $form.on('change', $el.selector, $.proxy(self.change, self));
             $(window).on('resize', function () {
                 self.setEllipsis();
             });
@@ -653,7 +653,7 @@
                         $form = $btn.closest('form');
                         // downgrade to normal form submit if possible
                         if ($form.length) {
-                            $form.trigger('submit'); 
+                            $form.trigger('submit');
                         }
                         e.preventDefault();
                     }
